@@ -1,6 +1,7 @@
 import os
 from github import Github
 from dotenv import load_dotenv
+import time
 
 load_dotenv()
 g = Github(os.getenv("GITHUB_ACCESS_TOKEN"))
@@ -25,4 +26,5 @@ for pod_repo in pod_repos:
             body=issue.body,
             labels=labels
         )
+        time.sleep(10000)
         print(f"Added {i}")
