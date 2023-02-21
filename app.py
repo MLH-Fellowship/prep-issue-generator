@@ -1,6 +1,7 @@
 import os
 from github import Github
 from dotenv import load_dotenv
+import time
 
 load_dotenv()
 g = Github(os.getenv("GITHUB_ACCESS_TOKEN"))
@@ -8,7 +9,7 @@ g = Github(os.getenv("GITHUB_ACCESS_TOKEN"))
 repo = g.get_repo("MLH-Fellowship/portfolio-template")
 issues = repo.get_issues(state="open", labels=["template"])
 
-pod_repos = ["MLH-Fellowship/pod-4.1.0-portfolio", "MLH-Fellowship/pod-4.1.1-portfolio", "MLH-Fellowship/pod-4.1.2-portfolio"]
+pod_repos = ["MLH-Fellowship/prep-portfolio-23.MAR.PREP.1", "MLH-Fellowship/prep-portfolio-23.MAR.PREP.2"]
 
 
 for pod_repo in pod_repos:
@@ -26,3 +27,4 @@ for pod_repo in pod_repos:
             labels=labels
         )
         print(f"Added {i}")
+        time.sleep(15)
